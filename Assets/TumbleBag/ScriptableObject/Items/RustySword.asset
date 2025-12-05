@@ -15,4 +15,7 @@ MonoBehaviour:
   itemName: 
   icon: {fileID: 0}
   description: 
+  widthCells: 1
+  heightCells: 2
+  shapeMap: 0101
   attackDamage: 1

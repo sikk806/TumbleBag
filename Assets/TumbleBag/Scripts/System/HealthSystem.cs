@@ -2,7 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class HealthManager : MonoBehaviour
+public class HealthSystem : MonoBehaviour
 {
     [Header("체력")]
     [SerializeField] private int maxHp = 10;
@@ -16,7 +16,17 @@ public class HealthManager : MonoBehaviour
 
     public int CurrentHp => currentHp;
     public int MaxHp => maxHp; 
-    public bool IsDead => (currentHp <= 0);
+    public bool IsDead => (CurrentHp < 1);
+
+    void Start()
+    {
+        InitHealth();
+    }
+
+    public void InitHealth()
+    {
+        currentHp = maxHp;
+    }
 
     public void TakeDamage(int damage)
     {

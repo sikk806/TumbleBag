@@ -1,14 +1,14 @@
 using System;
 using UnityEngine;
 
-public class AttackManager : MonoBehaviour
+public class AttackSystem : MonoBehaviour
 {
     // Attack 관련 델리게이트
     public event Action<GameObject, int> OnAttackSuccess;
 
     public void TryAttack(GameObject target, int damage)
     {
-        HealthManager targetHealth = target.GetComponent<HealthManager>();
+        HealthSystem targetHealth = target.GetComponent<HealthSystem>();
 
         if(targetHealth != null)
         {
@@ -18,6 +18,10 @@ public class AttackManager : MonoBehaviour
             targetHealth.TakeDamage(damage);
 
             OnAttackSuccess?.Invoke(target, damage);
+        }
+        else
+        {
+            Debug.Log($"{gameObject.name}에 targetHealth가 없음");
         }
     }
 }

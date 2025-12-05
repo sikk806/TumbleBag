@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 631511142252921508}
   - component: {fileID: 8113777458954900749}
+  - component: {fileID: 7967366973081938955}
   m_Layer: 0
   m_Name: Slot
   m_TagString: Untagged
@@ -90,3 +91,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7967366973081938955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7045062802213646498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab5f349db74399149af265362a0ddc97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlotUI

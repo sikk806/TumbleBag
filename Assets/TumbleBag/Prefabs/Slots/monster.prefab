@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 381539959340220589}
   - component: {fileID: 201863440911468256}
   - component: {fileID: 4124388477209213141}
+  - component: {fileID: 2339039634199910203}
+  - component: {fileID: -8232507981918461639}
   m_Layer: 0
   m_Name: monster
-  m_TagString: monster
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,3 +139,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.5, y: 1.56}
   m_EdgeRadius: 0
+--- !u!114 &2339039634199910203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7662624069830074921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed5b4570c69a9945be8c5a659c11d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+--- !u!114 &-8232507981918461639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7662624069830074921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235aa9f9c9146984c8ef8d305302e7e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
+  maxHp: 10

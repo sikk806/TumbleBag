@@ -5,7 +5,7 @@ public class Sword : MonoBehaviour
     [Header("Stat")]
     [SerializeField] private WeaponItemData weaponData;
 
-    private AttackManager attackSystem;
+    private AttackSystem attackSystem;
 
     public int CurrentDamage
     {
@@ -22,14 +22,14 @@ public class Sword : MonoBehaviour
     }
     void Start()
     {
-        attackSystem = GetComponent<AttackManager>();
+        attackSystem = GetComponent<AttackSystem>();
     }
 
-    private void O2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
             attackSystem.TryAttack(collision.gameObject, this.CurrentDamage);
-        }        
+        }
     }
 }
