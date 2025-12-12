@@ -1,29 +1,48 @@
+using System.Collections;
 using UnityEngine;
-using System.Collections.Generic;
 
 public class ShakeSystem : MonoBehaviour
 {
-    [Header("흔들기 파워 설정")]
-    [Tooltip("위로 튀어오르는 힘")]
-    [SerializeField] private float upwardForce = 10f;
-    [Tooltip("좌우로 퍼지는 힘")]
-    [SerializeField] private float sideForceRange = 5f;
-    [Tooltip("회전력 힘")]
-    [SerializeField] private float torqueRange = 50f;
+    public static ShakeSystem Instance { get; private set; }
 
-    private List<Rigidbody2D> itemsInBag = new List<Rigidbody2D>();
+    private Vector3 originalPos;
+    private Coroutine currentShakeCoroutine;
 
-    void Update()
+    void Awake()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Instance == null) Instance = this;
+        originalPos = transform.position;
+    }
+
+    // duration: 흔드는 시간(초), magnitude: 흔드는 강도
+    public void Shake(float duration, float magnitude)
+    {
+        // 이미 흔들리고 있다면 멈추고 위치를 초기화합니다. (연타 시 문제 방지)
+        if (currentShakeCoroutine != null)
         {
-            ShakeBag();
+            StopCoroutine(currentShakeCoroutine);
+            transform.position = originalPos;
         }
+        currentShakeCoroutine = StartCoroutine(DoShake(duration, magnitude));
     }
 
-    void ShakeBag()
+    private IEnumerator DoShake(float duration, float magnitude)
     {
-        
-    }
+        float elapsed = 0.0f;
 
+        while (elapsed < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+
+            transform.position = new Vector3(originalPos.x + x, originalPos.y + y, originalPos.z);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // 흔들기가 끝나면 반드시 원래 위치로 복귀
+        transform.position = originalPos;
+        currentShakeCoroutine = null;
+    }
 }

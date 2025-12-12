@@ -14,17 +14,9 @@ public class GridSystem : MonoBehaviour
     public GameObject monsterPrefab;
     public SpriteRenderer slotBox; // slot이 채워질 공간 (가장 큰 네모 공간)
 
-    private GridManager gridManager;
 
     void Start()
     {
-        gridManager = GetComponent<GridManager>();
-        if(gridManager == null)
-        {
-            Debug.LogError("GridManager이 없음.");
-            return;
-        }
-
         GridInit();
     }
 
@@ -57,7 +49,7 @@ public class GridSystem : MonoBehaviour
 
         // 그리드 정보 초기화
         // 가로, 세로 크기와 타겟 셀의 크기(좌표 계산에 사용) 넘겨줌
-        gridManager.InitGrid(gridCol, gridRow, targetCellWidth);
+        GridManager.Instance.InitGrid(gridCol, gridRow, targetCellWidth);
 
         // 원본 슬롯의 크기 가져옴
         float originalSlotWidth = prefabRenderer.bounds.size.x;
@@ -115,7 +107,7 @@ public class GridSystem : MonoBehaviour
                 SlotUI slotUI = spawnedSlot.GetComponent<SlotUI>();
                 if(slotUI != null)
                 {
-                    gridManager.RegisterSlot(x, y, slotUI);
+                    GridManager.Instance.RegisterSlot(x, y, slotUI);
                 }
             }
         }

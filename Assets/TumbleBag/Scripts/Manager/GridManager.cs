@@ -43,6 +43,11 @@ public class GridManager : MonoBehaviour
 
     public bool CanPlaceItem(int targetX, int targetY, ItemData itemData)
     {
+        if(slotGrid == null) return false;
+        if(itemData == null)
+        {
+            Debug.LogError("No itemData");
+        }
         for(int dy = 0; dy < itemData.heightCells; dy++)
         {
             for(int dx = 0; dx < itemData.widthCells; dx++)
@@ -67,6 +72,8 @@ public class GridManager : MonoBehaviour
     
     public void PlaceItem(int targetX, int targetY, DragSystem item, ItemData itemData)
     {
+        if(slotGrid == null) return;
+
         SlotUI anchorSlot = slotGrid[targetX, targetY];
 
         item.transform.SetParent(anchorSlot.transform);
@@ -87,6 +94,38 @@ public class GridManager : MonoBehaviour
 
                     SlotUI slot = slotGrid[gridX, gridY];
                     slot.currentItem = item;
+
+                    slot.HideSlot();
+                }
+            }
+        }
+    }
+
+    public void UnPlaceItem(int targetX, int targetY, ItemData itemData)
+    {
+        if(slotGrid == null) return;
+
+        for(int dy = 0; dy < itemData.heightCells; dy++)
+        {
+            for(int dx = 0; dx < itemData.widthCells; dx++)
+            {
+                int shapeIndex = dy * itemData.widthCells + dx;
+
+                if(itemData.shapeMap[shapeIndex])
+                {
+                    int currentX = targetX + dx;
+                    int currentY = targetY + dy;
+
+                    if(IsValidCoordinate(currentX, currentY))
+                    {
+                        SlotUI slot = slotGrid[currentX, currentY];
+
+                        if(slot != null)
+                        {
+                            slot.RemoveItem();
+                            slot.ShowSlot();
+                        }
+                    }
                 }
             }
         }

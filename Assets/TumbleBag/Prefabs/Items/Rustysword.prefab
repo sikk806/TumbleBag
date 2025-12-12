@@ -302,3 +302,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f76fbe52fd60a42ae35c9104be94cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragSystem
+  itemData: {fileID: 11400000, guid: 7a0a58089f683ff43ad2738bb039f069, type: 2}

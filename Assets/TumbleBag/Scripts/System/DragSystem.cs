@@ -11,6 +11,7 @@ public class DragSystem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private SpriteRenderer spriteRenderer;
     private Camera mainCamera;
     private SlotUI lastHoveredSlot = null;
+    private Rigidbody2D rigid;
 
     void Start()
     {
@@ -22,6 +23,13 @@ public class DragSystem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         originalSlot = GetComponentInParent<SlotUI>();
+        rigid = GetComponent<Rigidbody2D>();
+        if(rigid == null)
+        {
+            rigid = gameObject.AddComponent<Rigidbody2D>();
+        }
+        rigid.bodyType = RigidbodyType2D.Kinematic;
+
         if(originalSlot != null && GridManager.Instance != null && itemData != null)
         {
             GridManager.Instance.PlaceItem(originalSlot.gridX, originalSlot.gridY, this, itemData);
@@ -31,13 +39,14 @@ public class DragSystem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("드래그 시작");
-        if (originalSlot != null)
+        if (originalSlot != null && GridManager.Instance != null && itemData != null)
         {
-            originalSlot.RemoveItem();
+            GridManager.Instance.UnPlaceItem(originalSlot.gridX, originalSlot.gridY, itemData);
         }
         
-        Transform slotContainer = transform.parent.parent; 
-        transform.SetParent(slotContainer.parent); 
+        Transform slotContainer = transform.parent; 
+        if(slotContainer != null && slotContainer.parent != null)
+            transform.SetParent(slotContainer.parent); 
 
         canvasGroup.blocksRaycasts = false;
         ChangeSpriteAlpha(0.6f);
@@ -77,12 +86,14 @@ public class DragSystem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         SlotUI nearestSlot = FindNearestSlot();
 
         // 2. 찾았고, 그 슬롯이 비어있다면? -> 그쪽으로 이사!
-        if (nearestSlot != null && nearestSlot.IsEmpty() && GridManager.Instance != null)
+        if (nearestSlot != null && nearestSlot.IsEmpty() && GridManager.Instance != null
+         && GridManager.Instance.CanPlaceItem(nearestSlot.gridX, nearestSlot.gridY, itemData))
         {
             Debug.Log($"스냅 성공! 새 슬롯: {nearestSlot.name}");
             nearestSlot.SetItem(this); 
             originalSlot = nearestSlot;
             nearestSlot.HideSlot();
+            GridManager.Instance.PlaceItem(nearestSlot.gridX, nearestSlot.gridY, this, itemData);
         }
         // 3. 못 찾았거나 이미 차있다면? -> 원래 슬롯으로 복귀!
         else
@@ -91,7 +102,24 @@ public class DragSystem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             if (originalSlot != null)
             {
                 originalSlot.SetItem(this); // 원래 슬롯으로 돌아감
+                GridManager.Instance.PlaceItem(originalSlot.gridX, originalSlot.gridY, this, itemData);
             }
+        }
+    }
+
+    public void StartBattle()
+    {
+        // 드래그 비활성화
+        this.enabled = false;
+
+        if(transform.parent != null)
+        {
+            transform.SetParent(transform.parent);
+        }
+
+        if(rigid != null)
+        {
+            rigid.bodyType = RigidbodyType2D.Dynamic;
         }
     }
 
@@ -102,12 +130,16 @@ public class DragSystem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     private SlotUI FindNearestSlot()
     {
-        SlotUI[] allSlots = FindObjectsOfType<SlotUI>();
+        if(GameManager.Instance == null)
+        {
+            Debug.LogError("GameManager가 없음!! (DragSystem -> FindNearestSlot)");
+            return null;
+        }
         
         SlotUI nearest = null;
         float minDistance = float.MaxValue; 
 
-        foreach (SlotUI slot in allSlots)
+        foreach (SlotUI slot in GameManager.Instance.ActivateSlots)
         {
             float distance = Vector3.Distance(transform.position, slot.transform.position);
 
