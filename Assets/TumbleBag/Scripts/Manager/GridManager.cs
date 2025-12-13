@@ -74,9 +74,12 @@ public class GridManager : MonoBehaviour
     {
         if(slotGrid == null) return;
 
+        // 슬롯 기준점 찾기
         SlotUI anchorSlot = slotGrid[targetX, targetY];
 
         item.transform.SetParent(anchorSlot.transform);
+
+
         item.transform.localPosition = Vector3.zero;
 
         item.SetOriginalSlot(anchorSlot);
