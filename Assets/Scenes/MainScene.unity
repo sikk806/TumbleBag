@@ -1053,7 +1053,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1989529562
+--- !u!1001 &1760535909
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1063,19 +1063,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 27340338019165110, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
       propertyPath: m_Name
-      value: Rustysword (1)
+      value: Rustysword
       objectReference: {fileID: 0}
-    - target: {fileID: 1821762561932941506, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
-      propertyPath: itemData
-      value: 
-      objectReference: {fileID: 11400000, guid: 7a0a58089f683ff43ad2738bb039f069, type: 2}
     - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.92
+      value: -2.59601
       objectReference: {fileID: 0}
     - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.24
+      value: -0.33754
       objectReference: {fileID: 0}
     - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1083,7 +1079,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9659258
       objectReference: {fileID: 0}
     - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1095,7 +1091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.2588191
       objectReference: {fileID: 0}
     - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1107,7 +1103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1204,67 +1200,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &8369487226800336251
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 27340338019165110, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
-      propertyPath: m_Name
-      value: Rustysword
-      objectReference: {fileID: 0}
-    - target: {fileID: 1821762561932941506, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
-      propertyPath: itemData
-      value: 
-      objectReference: {fileID: 11400000, guid: 7a0a58089f683ff43ad2738bb039f069, type: 2}
-    - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064740820305809406, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fded392ce932cc04a9c85aabb57e7c77, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1272,9 +1207,8 @@ SceneRoots:
   - {fileID: 1099136790}
   - {fileID: 522610398}
   - {fileID: 2029235665}
-  - {fileID: 8369487226800336251}
-  - {fileID: 1989529562}
   - {fileID: 829262179}
   - {fileID: 1179388061}
   - {fileID: 1164308835}
   - {fileID: 1187316870}
+  - {fileID: 1760535909}

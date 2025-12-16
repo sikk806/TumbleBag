@@ -28,6 +28,14 @@ public class HealthSystem : MonoBehaviour
         currentHp = maxHp;
     }
 
+    public void SetMaxHp(int newMaxHp)
+    {
+        if(newMaxHp < 1)
+        {
+            Debug.LogWarning($"[HealthSystem] {gameObject.name}의 MaxHp가 잘못 되었습니다.");
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         if(IsDead) return;
